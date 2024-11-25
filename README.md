@@ -1,5 +1,7 @@
 # POC-Cinema (React em Prática)
 
+<img src="[https://pbs.twimg.com/profile_images/1785867863191932928/EpOqfO6d_400x400.png](https://campinas.com.br/wp-content/uploads/2023/09/pipoca-no-cinema-com-almofada-no-chao-scaled-e1695841582534.jpg)" width="600px" >
+
  <!--ts-->
  
  * [Ajustes Iniciais NextJS](#Ajuste)
