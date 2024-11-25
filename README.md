@@ -1,6 +1,6 @@
 # POC-Cinema (React em Prática)
 
-<img src="(https://campinas.com.br/wp-content/uploads/2023/09/pipoca-no-cinema-com-almofada-no-chao-scaled-e1695841582534.jpg)" width="600px" >
+<img src="https://campinas.com.br/wp-content/uploads/2023/09/pipoca-no-cinema-com-almofada-no-chao-scaled-e1695841582534.jpg" width="600px" >
 
  <!--ts-->
  
