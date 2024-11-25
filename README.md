@@ -4,6 +4,7 @@
 
  <!--ts-->
  
+ * [Overview do projeto](#Overview)
  * [Ajustes Iniciais NextJS](#Ajustes_Iniciais)
  * [Criando Componentes - BuyButton](#BuyButton)
  * [Criando Componentes - Movie](#BuyButton)
@@ -20,8 +21,10 @@
  *   
  
  <!--te-->
+#Overview
 
- ## Ajustes_Iniciais
+
+## Ajustes_Iniciais
  
 A estrutura básica de um projeto Next.js geralmente se parece com isso:
 ~~~arduino
@@ -42,83 +45,48 @@ A estrutura básica de um projeto Next.js geralmente se parece com isso:
 ~~~
 ### 1. Limpando o Page JS e o global CSS/<br>
 O Nex.JS vem com um layout default quando o iniciamos, algo parecido com a imagem abaixo (a depender da versão):
+[imagem]
+
+Entretanto, nosso layout será bem diferente, então podemos deletar tudo que está dentro da cláusula "Return" no arquivo "page.js",e vamos aplicar a cláusula "use client" no inicio do script:
+
+[imagem]
+
+Também vamos deletar todo o código dentro do arquivo "global.css" para que aplicar a nossa estilização em fases posteriores do projeto
+
+[imagem] 
 
 
+## BuyButton
 
- ## Componentes
-Os componentes em Next.js são criados utilizando a sintaxe de função. Um componente simples poderia ser assim:
- ~~~jsx
-// app/components/Hello.js
-const Hello = ({ name }) => {
-  return <h1>Hello, {name}!</h1>;
-};
+Vamos criar o nosso primeiro componente, o botão de compra de ingressos. Para isso, o primeiro passo é criar duas pastas dentro do diretório "src/app",  uma chamada "components" e outra chamada "BuyButton", resultando no caminho "src/app/components/BuyButton". Depois, criamos os arquivos "index.js" e "buybutton.module.css" 
 
-export default Hello;
+Ao abrir o arquivo "index.js" temos a seguinte estrutura inicial
 
-~~~
-Para usar esse componente na página principal, você poderia fazer:
- ~~~jsx
-// app/page.js
-import Hello from './components/Hello';
+```javascript
+"use client"
+import './buybutton.module.css'
 
-const Home = () => {
-  return (
-    <div>
-      <Hello name="World" />
-    </div>
-  );
-};
+const BuyButton = ({preco}) => {
 
-export default Home;
-~~~
-
- ## Estilos
-### Estilo Global
-O CSS global é aplicado a toda a aplicação e é definido em um arquivo, como globals.css. Esse arquivo é importado no layout.js:
-~~~css
- /* styles/globals.css */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+    return (
+    <section className='button'>
+        <button className='buybutton'>
+            <div>
+                Comprar<br/>
+            </div>
+            <div className='preco'>
+                R${preco}
+            </div>
+        </button>
+    </section>
+    )
 }
-~~~
 
-~~~jsx
-// app/layout.js
-import './globals.css';
+export default BuyButton
 
-const Layout = ({ children }) => {
-  return <main>{children}</main>;
-};
+```
 
-export default Layout;
-~~~~
 
-### Estilo de Módulo
-Os módulos CSS permitem que você aplique estilos localmente a um componente, evitando conflitos de nomes. Crie um arquivo de módulo CSS:
-~~~css
-/* styles/Home.module.css */
-.title {
-  color: blue;
-  font-size: 2em;
-}
-~~~~
-Depois, você pode importá-lo no seu componente:
-~~~jsx
-// app/page.js
-import styles from '../styles/Home.module.css';
 
-const Home = () => {
-  return (
-    <div>
-      <h1 className={styles.title}>Welcome to Next.js!</h1>
-    </div>
-  );
-};
-
-export default Home;
-~~~~
 
 
