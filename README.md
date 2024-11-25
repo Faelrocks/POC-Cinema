@@ -130,4 +130,40 @@ export default function Home() {
 
 ```
 
+Agora, já temos um botão em nossa página
+[imagem]
+
+Com isso, podemos formatá-lo através do arquivo "buybutton.module.css" conforme abaixo:
+
+```css
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.buybutton {
+    background-color: #CD4A3E;
+    color: #F0F0F0;
+    padding: 12px;
+    margin-top: 24px;
+    font-size: 32px;
+    border-radius: 12px;
+    width: 354px ;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.preco {
+    font-size: 16px;
+    margin-top: 8
+    4px;
+    font-weight: 200;
+}
+
+```
+
+Assim, temos como resultafo final:
+
+[image]
 
