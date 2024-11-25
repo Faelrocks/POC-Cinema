@@ -4,7 +4,7 @@
 
  <!--ts-->
  
- * [Ajustes Iniciais NextJS](#Ajuste)
+ * [Ajustes Iniciais NextJS](#Ajustes_Iniciais)
  * [Criando Componentes - BuyButton](#BuyButton)
  * [Criando Componentes - Movie](#BuyButton)
    * [Layout Básico](#BuyButton)
@@ -21,9 +21,7 @@
  
  <!--te-->
 
- ## Ajuste
-
-
+ ## Ajustes_Iniciais
  
 A estrutura básica de um projeto Next.js geralmente se parece com isso:
 ~~~arduino
