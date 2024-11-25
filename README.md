@@ -40,23 +40,10 @@ A estrutura básica de um projeto Next.js geralmente se parece com isso:
    ├── next.config.js
    └── README.md
 ~~~
-### 1. Pasta app/<br>
-A nova estrutura de app é uma das principais mudanças no Next.js 13 e continuou em 14.<br>
-Aqui estão os componentes principais:,<br>
-page.js: Este arquivo define uma página em sua aplicação. Cada page.js em uma subpasta dentro de app representa uma rota. Por exemplo, app/about/page.js seria acessível em /about.<br>
-layout.js: Este arquivo define o layout da sua aplicação. Você pode usar este componente para encapsular páginas comuns, como cabeçalhos ou rodapés, evitando a repetição de código.<br>
-globals.css: Aqui você pode definir estilos globais para toda a sua aplicação. O Next.js cuida do carregamento desses estilos.
+### 1. Limpando o Page JS e o global CSS/<br>
+O Nex.JS vem com um layout default quando o iniciamos, algo parecido com a imagem abaixo (a depender da versão):
 
-### 2. Pasta public/
-Contém arquivos estáticos, como imagens e ícones, que podem ser acessados diretamente pela URL. Por exemplo, public/images/logo.png pode ser acessado em /images/logo.png.
-### 3. Pasta styles/
-Usada para armazenar estilos específicos da aplicação. Você pode organizar seus arquivos CSS ou usar pré-processadores como SASS.
-### 4. Arquivo package.json
-Contém as dependências do projeto, scripts de execução e outras configurações do npm. Aqui você encontrará pacotes como react, next, entre outros.
-### 5. Arquivo next.config.js
-Usado para configurar opções do Next.js, como redirecionamentos, reescritas de URL, e outras personalizações.
-### 6. Arquivo README.md
-Um arquivo padrão que pode ser usado para documentar seu projeto, instruções de instalação, uso e outras informações úteis.
+
 
  ## Componentes
 Os componentes em Next.js são criados utilizando a sintaxe de função. Um componente simples poderia ser assim:
