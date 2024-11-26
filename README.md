@@ -11,9 +11,9 @@
    * [Layout Básico](#Layout_Movie)
    * [Inserindo informações através de um json (require)](#Require)
    * [Inserindo a tela e a leganda (UseState)](#UseState)
- * [Criando Componentes - Seats](#BuyButton)
-   * [Layout Básico](#Estilos)
-   * [Inserindo assentos](#Estilos)
+ * [Criando Componentes - Seats](#Seats)
+   * [Layout Básico](#Layout_Seats)
+   * [Inserindo assentos](#Map)
  * [Deixando a Página Responsiva](#Estilos)
    * [Diferentes tamanhos de tela (media queries)](#Estilos)
    * [Diferentes esquemas de cores (matchMedia)](#Estilos)
@@ -384,7 +384,8 @@ Realizamos as seguintes alterações no aquivo "index.js" (do componente Movie):
  4. Realizamos um "if statement" para selecionar as imagens que devem ser utilizadas em cada ocasião (tema escuro/tema claro)
  5. Utilizamos o "useEffect" para atualizar automaticamente as imagens caso o usuário altere a cor enquanto utiliza a aplicação (sem necessidade de recarregar a página)
  6. Realizamos isso através do método "addEventListener" que observa estas alterações do usuário
- 7. Com isso, geramos "gatilhos"de alteração
+ 7. Com isso, geramos "gatilhos" de alteração, onde o componente é alterado e renderizado novamente conforme a utilização o usuário
+ 8. Substituímos o texto pelas tags no html (screenImage, subtitleImage)
 
 
 ```javascript
@@ -440,11 +441,7 @@ const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
             <section className={styles.bottom}>
                 <div className={styles.room}>
                     <div className={styles.seat}>
-                        {movies.assentos.map(vacant => <Seats
-                            number={vacant.numero}
-                            vacant={vacant.disponivel}
-                        />
-                        )}
+                        <p>assentos</p>
                     </div>
                     <div className={styles.tela}>
                         <p>Tela</p>
@@ -465,17 +462,17 @@ const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
 
 export default Movie
 
-
-
 ```
 
+Com isso temos o seguinte resultado
 
+Tema escuro:
 
+<img src="imagens_readme/movie-component-dark.png" width="600px" >
 
+Tema claro:
 
-
-
-
+<img src="imagens_readme/movie-component-light.png" width="600px" >
 
 
 
