@@ -1,0 +1,22 @@
+:root {
+    color-scheme: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+
+body {
+    background-color: #1A1A24;
+    color: #F0F0F0;
+    margin: 12px;
+}
+}
+
+@media (prefers-color-scheme: light) {
+    
+body {
+    background-color: #F0F0F0;
+    color: #1A1A24;
+    margin: 12px;
+}
+
+}

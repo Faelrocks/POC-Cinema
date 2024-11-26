@@ -1,0 +1,24 @@
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.buybutton {
+    background-color: #CD4A3E;
+    color: #F0F0F0;
+    padding: 12px;
+    margin-top: 24px;
+    font-size: 32px;
+    border-radius: 12px;
+    width: 354px ;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.preco {
+    font-size: 16px;
+    margin-top: 8
+    4px;
+    font-weight: 200;
+}
