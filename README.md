@@ -45,7 +45,7 @@ A estrutura básica de um projeto Next.js geralmente se parece com isso:
    ├── next.config.js
    └── README.md
 ~~~
-### 1. Limpando o Page JS e o global CSS/<br>
+### Limpando o Page JS e o global CSS/<br>
 O Nex.JS vem com um layout default quando o iniciamos, algo parecido com a imagem abaixo (a depender da versão):
 [imagem]
 
@@ -172,6 +172,106 @@ Assim, temos como resultafo final:
 
 
 ## Componente_Movie
+
+Agora, necessitamos um componente para importar as inforomações do json e criar o "corpo" da aplicação
+
+Criamos uma basta chamada "Movie" dentro do diretório "components", em seguida criamos os arquivos "index.js" e "movie.module.css".
+
+Assim como no componente anterior, importamos o css e criamos a estrutura padrão no arquivo "index.js"
+
+Na construção do index.js demosntrada abaixo, temos os seguintes passos:
+
+ 1. Criamos uma constante chamada "Movie" que recebe as informaçoes referentes ao filme como título, horário, sinópise, lancamento e direcao (informações contidas no arquivo json)
+ 2. Retornamos o html com as devidas seções, separadas em topo da página e base da página.  
+ 3. A base da página foi separada entre "sala" para representar a sala de cinema, e "texto", onde estarão as informacoes sobre o filme (nosso foco nesse bolo)
+ 4. Urilizamos as tags "styles" para a formatação com o css
+ 5. Utilizamos as demais tags para obter as informações que necessitamos do arquivo json direto da oagina principal
+
+```javascript
+
+"use client"
+import styles from './movie.module.css'
+
+const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
+
+    return (
+        <section className={styles.movie}>
+            <div className={styles.top}>
+                <h1 className={styles.titulo}><b>{titulo}</b><br /></h1>
+                <h2 className={styles.horario}>{horario}</h2>
+            </div>
+            <section className={styles.bottom}>
+                <div className={styles.room}>
+                    <div className={styles.seat}>
+                        <p>assentos</p>
+                    </div>
+                    <div className={styles.tela}>
+                        <p>Tela</p>
+                        <img src={screenImage} />
+                        <img src={subtitleImage} />
+                    </div>
+                </div>
+                <div className={styles.texto}>
+                    <p className={styles.sin}><b>Sinopise do filme</b><br /> {sinopise} </p>
+                    <p className={styles.data}><b>Data de lancamento</b><br /> {lancamento} </p>
+                    <p className={styles.dir}><b>Direcao</b><br /> {direcao} </p>
+                </div>
+            </section>
+        </section>
+
+    )
+}
+
+export default Movie
+
+```
+
+Para obtermos as informações sobre o filme, fizemos as seguintes alterações no arquivo "page.js":
+
+ 1. Importamos o componente "movies" no inicio da página
+ 2. Criamos uma constante chamda "movies" que recebe as informações do arquivo json através da função "require"
+ 3. Dento da função "Home()", inserimos a nova tag html "<Movie />" e associamos cada valor esperado com o json
+
+```javascript
+
+"use client"
+import BuyButton from "./components/BuyButton";
+import Movie from "./components/Movie";
+
+const movies = require("./components/filme.json");
+
+export default function Home() {
+
+  return ( 
+    <div>
+      <section>
+        <Movie titulo={movies.titulo} horario={movies.horario} sinopise={movies.sinopse} lancamento={movies.dataLancamento} direcao={movies.direcao} />
+      </section>
+      <BuyButton />
+    </div>
+  );
+}
+
+```
+Exemplificando: para extrair a sinópise do filme, utilizamos o argumento "movies.sinopise", a variável "movies" contem em vetor todas as infomações do arquivo json, quando utilizamos o ".sinopise" conseguimos acessar a informação dentro do arquivo (como se fosse um ínfice).
+
+Repare que o arquivo possui o formato "chave":"valor" de todas as informações que necessitamos:
+
+```java
+
+{
+  "titulo": "A Forja",
+  "sinopse": "Um ano depois de encerrar o ensino médio, o jovem Isaías Wright não tem planos para o futuro e é desafiado por sua mãe solo e um empresário de sucesso a começar a traçar um rumo melhor para sua vida. Ele passa a ser discipulado pelo seu novo mentor, conta com orações de sua mãe e de uma guerreira de orações, Dona Clara, e começa a descobrir o propósito de Deus para sua vida.",
+  "dataLancamento": "26 de setembro de 2024 (Brasil)",
+  "direcao": "Alex Kendrick",
+  "horario": "16:40",
+
+```
+
+
+
+
+
 
 
 
