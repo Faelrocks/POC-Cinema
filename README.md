@@ -7,7 +7,7 @@
  * [Overview do projeto](#Overview)
  * [Ajustes Iniciais NextJS](#Ajustes_Iniciais)
  * [Criando Componentes - BuyButton](#BuyButton)
- * [Criando Componentes - Movie](#BuyButton)
+ * [Criando Componentes - Movie](#Componente_Movie)
    * [Layout Básico](#BuyButton)
    * [Inserindo informações através de um json (require)](#Estilos)
    * [Inserindo a tela e a leganda (UseState)](#BuyButton)
@@ -169,4 +169,9 @@ Com isso, podemos formatá-lo através do arquivo "buybutton.module.css" conform
 Assim, temos como resultafo final:
 
 [image]
+
+
+## Componente_Movie
+
+
 
