@@ -614,5 +614,15 @@ Desta forma, nossa aplicação renderiza todas os assentos do Cinema
                     </div>
 ```
 
+Como resultado final, temos os layouts:
+
+Tema escuro:
+
+<img src="imagens_readme/seat-component-dark.png" width="600px" >
+
+Tema claro:
+
+<img src="imagens_readme/seat-component-light.png" width="600px" >
+
 
 
