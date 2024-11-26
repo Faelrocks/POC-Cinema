@@ -184,8 +184,9 @@ Na construção do index.js demosntrada abaixo, temos os seguintes passos:
  1. Criamos uma constante chamada "Movie" que recebe as informaçoes referentes ao filme como título, horário, sinópise, lancamento e direcao (informações contidas no arquivo json)
  2. Retornamos o html com as devidas seções, separadas em topo da página e base da página.  
  3. A base da página foi separada entre "sala" para representar a sala de cinema, e "texto", onde estarão as informacoes sobre o filme (nosso foco nesse bolo)
- 4. Urilizamos as tags "styles" para a formatação com o css
- 5. Utilizamos as demais tags para obter as informações que necessitamos do arquivo json direto da oagina principal
+ 4. Os parágrafos "assentos", "tela" e "legenda" serão substituídos posteriormente, apenas represnetam o posicionamento destes elementos
+ 5. Utilizamos as tags "styles" para a formatação com o css
+ 6. Utilizamos as demais tags para obter as informações que necessitamos do arquivo json direto da oágina principal
 
 ```javascript
 
@@ -207,8 +208,7 @@ const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
                     </div>
                     <div className={styles.tela}>
                         <p>Tela</p>
-                        <img src={screenImage} />
-                        <img src={subtitleImage} />
+                        <p>Legenda</p>
                     </div>
                 </div>
                 <div className={styles.texto}>
@@ -269,8 +269,95 @@ Repare que o arquivo possui o formato "chave":"valor" de todas as informações 
 
 ```
 
+Por fim, formatamos com o seginte CSS:
+
+```CSS
+
+.movie {
+    font-family: sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.horario {
+    font-size: 32px;
+    font-weight: 200;
+    margin-top: -48px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.room {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+
+}
+
+.seat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 45%;
+    margin: 0 27%;
+}
+
+.tela{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    align-items: center;
+}
 
 
+.texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: lighter;
+    align-items: baseline;
+    margin-right: 10%;
+    
+}
+
+.sin {
+    padding-bottom: 10%;
+}
+
+.data {
+    padding-bottom: 10%;
+}
+
+.dir {
+    padding-bottom: 10%;
+}
+
+```
+
+Assim, temos o seguinte resultado:
+
+<img src="imagens_readme/movie-component.png" width="600px" >
 
 
 
