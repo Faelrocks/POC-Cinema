@@ -11,8 +11,8 @@
    * [Layout Básico](#Layout_Movie)
    * [Inserindo informações através de um json (require)](#Require)
    * [Inserindo a tela e a leganda (UseState)](#UseState)
- * [Criando Componentes - Seats](#Seats)
-   * [Layout Básico](#Layout_Seats)
+ * [Criando Componentes - Seats](#Assentos)
+   * [Layout Básico](#Layout_Assentos)
    * [Inserindo assentos](#Map)
  * [Deixando a Página Responsiva](#Estilos)
    * [Diferentes tamanhos de tela (media queries)](#Estilos)
@@ -475,6 +475,106 @@ Tema claro:
 <img src="imagens_readme/movie-component-light.png" width="600px" >
 
 
+## Assentos
+
+Agora, necessitamos um componente para importar as inforomações do json e criar o "corpo" da aplicação
+
+Criamos uma basta chamada "Seats" dentro do diretório "components", em seguida criamos os arquivos "index.js" e "seats.module.css".
+
+Assim como no componente anterior, importamos o css e criamos a estrutura padrão no arquivo "index.js"
+
+Na construção do index.js demosntrada abaixo, temos os seguintes passos:
+
+ 1. Importamos o "useClient" e o "useState"
+ 2. Criamos uma constante chamada "Seats" que recebe o número do assento e o status dele (se está vazio ou não)
+ 3. Definimos a imagem padrão inicial
+ 4. Definimos que a variável de compra do assento é falsa
+ 5. Utilizamos o mesmo conceito do tópico anterior para alterar as imagens do assento quando o usuário troca o esquema de cores, bem como definir a imagem diferente para os assentos ocupados
+ 6. A constante "vacantSeat" é resposnsável por alterar o estado do assento (se está livre = true, se está ocupado = false)
+ 7. A constante selectSeat é responsável por alterar a figura e deixar o assento na cor vermelha quando realizamos a seleção, bem como impedir a selecão de assentos préviamente indisponíveis através do json
+ 8. Dentro do "Return", utiulizamos a função "onLoadedData" para importar as infomações do json e definir os assentos livres e ocupados
+ 9. Utilizamos a função "onClick" para que a função "selectSeat" execute ao clique do usuário
+
+```javascript
+
+"use client"
+import { useState, useEffect } from 'react'
+import style from "./seat.module.css"
+
+const Seats = ({ number, vacant }) => {
+    const [seatVacant, setSeatStatus] = useState(vacant)
+    const [seatImage, setSeatImage] = useState("/images/escuro/assentolivre.png")
+    const [seatBuy, setSeatBuy] = useState(false)
+
+
+
+    const updateThemeImage = (seat) => {
+
+        const corTema = window.matchMedia('(prefers-color-scheme: dark)')
+
+        if (corTema.matches === true) {
+            seat = "/images/escuro/assentolivre.png"
+
+            if (seatVacant === false) {
+                seat = "/images/escuro/assentoocupado.png"
+            }
+            } else {
+                seat = "/images/claro/assentolivre.png";
+                if (seatVacant === false) {
+                    seat = "/images/claro/assentoocupado.png"
+                }
+            }
+
+        setSeatImage(seat)
+    }
+
+    useEffect(() => {
+        const corTema = window.matchMedia('(prefers-color-scheme: dark)')
+
+        // Define a imagem inicialmente
+        updateThemeImage()
+
+        // Adiciona um listener para monitorar alterações no esquema de cores
+        const handleThemeChange = () => updateThemeImage()
+        corTema.addEventListener("change", handleThemeChange)
+
+        // Remove o listener ao desmontar o componente
+        return () => {
+            corTema.removeEventListener("change", handleThemeChange)
+        }
+    }, [seatVacant]) // Atualiza também se o estado `seatVacant` mudar
+
+    const vacantSeat = () => {
+        setSeatStatus(seatVacant)
+    }
+
+    const selectSeat = (seat) => {
+
+        if (seatVacant == true && seatBuy == false) {
+            seat = "/images/assentoselecionado.png"
+            setSeatImage(seat)
+            setSeatBuy(true)
+        } else if (seatVacant == true && seatBuy == true) {
+            updateThemeImage(seat)
+            setSeatBuy(false)
+        }
+
+    }
+
+
+
+    return (
+        <section className={style.seat}>
+            <img src={seatImage} onLoadedData={vacantSeat} onClick={selectSeat} />
+        </section>
+    )
+}
+
+export default Seats
+
+```
+
+## Layout_Assentos
 
 ## Map
 
