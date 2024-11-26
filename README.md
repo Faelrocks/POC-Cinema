@@ -8,9 +8,9 @@
  * [Ajustes Iniciais NextJS](#Ajustes_Iniciais)
  * [Criando Componentes - BuyButton](#BuyButton)
  * [Criando Componentes - Movie](#Componente_Movie)
-   * [Layout Básico](#BuyButton)
-   * [Inserindo informações através de um json (require)](#Estilos)
-   * [Inserindo a tela e a leganda (UseState)](#BuyButton)
+   * [Layout Básico](#Layout_Movie)
+   * [Inserindo informações através de um json (require)](#Require)
+   * [Inserindo a tela e a leganda (UseState)](#UseState)
  * [Criando Componentes - Seats](#BuyButton)
    * [Layout Básico](#Estilos)
    * [Inserindo assentos](#Estilos)
@@ -173,6 +173,8 @@ Assim, temos como resultafo final:
 
 ## Componente_Movie
 
+## Layout_Movie
+
 Agora, necessitamos um componente para importar as inforomações do json e criar o "corpo" da aplicação
 
 Criamos uma basta chamada "Movie" dentro do diretório "components", em seguida criamos os arquivos "index.js" e "movie.module.css".
@@ -225,6 +227,8 @@ const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
 export default Movie
 
 ```
+
+## Require
 
 Para obtermos as informações sobre o filme, fizemos as seguintes alterações no arquivo "page.js":
 
@@ -360,6 +364,7 @@ Assim, temos o seguinte resultado:
 <img src="imagens_readme/movie-component.png" width="600px" >
 
 
+## UseState
 
 
 
