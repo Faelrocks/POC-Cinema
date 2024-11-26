@@ -366,6 +366,122 @@ Assim, temos o seguinte resultado:
 
 ## UseState
 
+Como nossa aplicação deve ser dinâmica com o esquema de cor do usuário, utilizaremos o "useState" e o "useEffect" para conseguir representar esta dinâmica
+
+Sobre o useState e useEffect:
+
+O "useState" é um hook do React que permite adicionar estado às funções componentes, ele é para gerenciar valores dinâmicos que podem mudar ao longo do ciclo de vida de um componente.
+Em outras palavras, se um componente muda de estado na aplicação (precisa ser renderizado novamente), devemos utilizar o "useState".
+
+Já o "useEffect" é um hook do React que permite lidar com efeitos colaterais em componentes funcionais. Ele é usado para executar código em momentos específicos do ciclo de vida do componente, como após a renderização ou quando determinadas dependências mudam. Em outras palavras, se um componente tem um gatilho de alteração (sem necessariamente precisar ser renderizado novamente), devemos utilizar o "useEffect".
+
+
+Realizamos as seguintes alterações no aquivo "index.js" (do componente Movie):
+
+ 1. Importamos o "useState" e "useEffect" do react
+ 2. Inicializamos o useState logo no inicio da constate "Movie" com uma string vazia para ambos os casos (tela e subtítulo)
+ 3. Utilizamos a função "window.matchMedia" para identificar o esquema de cores que o usuário está utilizando
+ 4. Realizamos um "if statement" para selecionar as imagens que devem ser utilizadas em cada ocasião (tema escuro/tema claro)
+ 5. Utilizamos o "useEffect" para atualizar automaticamente as imagens caso o usuário altere a cor enquanto utiliza a aplicação (sem necessidade de recarregar a página)
+ 6. Realizamos isso através do método "addEventListener" que observa estas alterações do usuário
+ 7. Com isso, geramos "gatilhos"de alteração
+
+
+```javascript
+
+"use client"
+import { useState, useEffect } from 'react'
+import styles from './movie.module.css'
+import Seats from '../Seats'
+
+const movies = require("../filme.json")
+
+const Movie = ({ titulo, horario, sinopise, lancamento, direcao }) => {
+    const [screenImage, setScreenImage] = useState("")
+    const [subtitleImage, setSubtitleImage] = useState("")
+
+    const updateScreenImage = (screen, subtitle) => {
+
+        const corTema = window.matchMedia('(prefers-color-scheme: dark)')
+
+        if (corTema.matches === true) {
+            screen = "/images/escuro/tela.png"
+            subtitle = "/images/escuro/legendas.png"
+
+        } else {
+            screen = "/images/claro/tela.png"
+            subtitle = "/images/claro/legendas.png"
+        }
+
+    }
+
+    useEffect(() => {
+        const corTema = window.matchMedia('(prefers-color-scheme: dark)')
+
+        // Define a imagem inicialmente
+        updateScreenImage()
+
+        // Adiciona um listener para monitorar alterações no esquema de cores
+        const handleThemeChange = () => updateScreenImage()
+        corTema.addEventListener("change", handleThemeChange)
+
+        // Remove o listener ao desmontar o componente
+        return () => {
+            corTema.removeEventListener("change", handleThemeChange)
+        }
+    })
+
+    return (
+        <section className={styles.movie}>
+            <div className={styles.top}>
+                <h1 className={styles.titulo}><b>{titulo}</b><br /></h1>
+                <h2 className={styles.horario}>{horario}</h2>
+            </div>
+            <section className={styles.bottom}>
+                <div className={styles.room}>
+                    <div className={styles.seat}>
+                        {movies.assentos.map(vacant => <Seats
+                            number={vacant.numero}
+                            vacant={vacant.disponivel}
+                        />
+                        )}
+                    </div>
+                    <div className={styles.tela}>
+                        <p>Tela</p>
+                        <img src={screenImage} />
+                        <img src={subtitleImage} />
+                    </div>
+                </div>
+                <div className={styles.texto}>
+                    <p className={styles.sin}><b>Sinopise do filme</b><br /> {sinopise} </p>
+                    <p className={styles.data}><b>Data de lancamento</b><br /> {lancamento} </p>
+                    <p className={styles.dir}><b>Direcao</b><br /> {direcao} </p>
+                </div>
+            </section>
+        </section>
+
+    )
+}
+
+export default Movie
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+## Map
+
+
 
 
 
