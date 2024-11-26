@@ -10,16 +10,12 @@
  * [Criando Componentes - Movie](#Componente_Movie)
    * [Layout Básico](#Layout_Movie)
    * [Inserindo informações através de um json (require)](#Require)
-   * [Inserindo a tela e a leganda (UseState)](#UseState)
+   * [Inserindo a tela e a leganda (useState/useEffect)](#UseState)
  * [Criando Componentes - Seats](#Assentos)
    * [Layout Básico](#Layout_Assentos)
-   * [Inserindo assentos](#Map)
+   * [Inserindo assentos (Map)](#Map)
  * [Deixando a Página Responsiva](#Estilos)
-   * [Diferentes tamanhos de tela (media queries)](#Estilos)
-   * [Diferentes esquemas de cores (matchMedia)](#Estilos)
   
- *   
- 
  <!--te-->
 #Overview
 
@@ -624,5 +620,159 @@ Tema claro:
 
 <img src="imagens_readme/seat-component-light.png" width="600px" >
 
+## Estilos
+
+Por último, vamos formatas os arquivos CSS para que nosso projeto seja responsivo para SmartPhones (atraves de media queries), e para que as fontes e textos fiquem adequados
+
+global.css
+
+```CSS
+
+:root {
+    color-scheme: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+
+body {
+    background-color: #1A1A24;
+    color: #F0F0F0;
+    margin: 12px;
+}
+}
+
+@media (prefers-color-scheme: light) {
+    
+body {
+    background-color: #F0F0F0;
+    color: #1A1A24;
+    margin: 12px;
+}
+
+}
+
+```
+
+movioes.module.css 
+
+```CSS
 
 
+.movie {
+    font-family: sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.horario {
+    font-size: 32px;
+    font-weight: 200;
+    margin-top: -48px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.room {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+
+}
+
+.seat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 45%;
+    margin: 0 27%;
+}
+
+.tela{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    align-items: center;
+}
+
+
+.texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: lighter;
+    align-items: baseline;
+    margin-right: 10%;
+    
+}
+
+.sin {
+    padding-bottom: 10%;
+}
+
+.data {
+    padding-bottom: 10%;
+}
+
+.dir {
+    padding-bottom: 10%;
+}
+
+@media (prefers-color-scheme: light) {
+    
+    .movie {
+        color: black;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottom {
+        display: flex;
+        flex-direction: column;
+    }
+    .room {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 0px;
+    
+    }
+    
+    .seat {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 400px;
+        margin: 0;
+        
+    }
+    
+    .texto {
+        display: none;
+    }
+}
+
+```
