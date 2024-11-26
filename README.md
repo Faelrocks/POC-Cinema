@@ -168,10 +168,12 @@ Com isso, podemos formatá-lo através do arquivo "buybutton.module.css" conform
 
 Assim, temos como resultafo final:
 
-[image]
+<img src="imagens_readme/botao-final.png" width="600px" >
 
 
 ## Componente_Movie
+
+
 
 
 
