@@ -477,6 +477,8 @@ Tema claro:
 
 ## Assentos
 
+## Layout_Assentos
+
 Agora, necessitamos um componente para importar as inforomações do json e criar o "corpo" da aplicação
 
 Criamos uma basta chamada "Seats" dentro do diretório "components", em seguida criamos os arquivos "index.js" e "seats.module.css".
@@ -574,12 +576,43 @@ export default Seats
 
 ```
 
-## Layout_Assentos
+Formatamos também o CSS para que os assentos mantenham o padrão do figma
+
+```CSS
+
+.seat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+```
+
+
+
 
 ## Map
 
+Para que os assentos sejam renderizados na tela, temos que alterar o componente "Movies"
 
+Precisamos transpor o vetor do json para a nossa aplicação, faremos isso através da função map.
 
+Sobre a função map:
+
+Portanto, no componente Movie, dentro do html, inserimos a função map, que nos retorna o número e se o assento está disponível ou não através de um vetor.
+Desta forma, nossa aplicação renderiza todas os assentos do Cinema
+
+```javascript
+                    <div className={styles.seat}>
+                        {movies.assentos.map(vacant => <Seats
+                            number={vacant.numero}
+                            vacant={vacant.disponivel}
+                        />
+                        )}
+                    </div>
+```
 
 
 
