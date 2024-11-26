@@ -776,3 +776,14 @@ movioes.module.css
 }
 
 ```
+
+Resultado Final:
+
+Tema escuro:
+
+<img src="imagens_readme/smartphone-dark.png" width="600px" >
+
+Tema claro:
+
+<img src="imagens_readme/smartphone-light.png" width="600px" >
+
