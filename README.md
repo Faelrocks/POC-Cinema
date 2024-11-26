@@ -265,6 +265,7 @@ Repare que o arquivo possui o formato "chave":"valor" de todas as informações 
   "dataLancamento": "26 de setembro de 2024 (Brasil)",
   "direcao": "Alex Kendrick",
   "horario": "16:40",
+}
 
 ```
 
