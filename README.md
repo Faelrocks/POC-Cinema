@@ -2,6 +2,12 @@
 
 <img src="https://campinas.com.br/wp-content/uploads/2023/09/pipoca-no-cinema-com-almofada-no-chao-scaled-e1695841582534.jpg" width="600px" >
 
+# POC-Cinema (React em Prática)
+
+Nome: Rafael Queiroz Moraes     RA: 10441847
+Nome: Fabrício de Almeida Silva RA: 10437724
+Nome: Joao Vitor Macea Vinhando RA:10437139
+
  <!--ts-->
  
  * [Overview do projeto](#Overview)
